@@ -1,3 +1,7 @@
 DEPENDPATH  += $$PWD
 INCLUDEPATH += $$PWD
-LIBS += -L$$ROOT_DIR/bin -l$$ROOT_DIR/bin/meanshift -l$$ROOT_DIR/bin/libmeanshift $$LIBS
+win32-msvc* {
+  LIBS += -L$$ROOT_DIR/bin -l$$ROOT_DIR/bin/meanshift $$LIBS
+}else {
+  LIBS += -L$$ROOT_DIR/bin -l$$ROOT_DIR/bin/libmeanshift.a $$LIBS
+}
