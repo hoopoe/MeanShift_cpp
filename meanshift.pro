@@ -1,19 +1,13 @@
 exists(../../config.pri) {
-  message(config.pri detected...)
+  !build_pass:message(config.pri detected...)
   include(../../config.pri)
   ROOT_DIR=$$PWD/../..
   DESTDIR = $$ROOT_DIR/bin
 }
 else {
-  message(config.pri NOT detected...) 
+  !build_pass:message(config.pri NOT detected...) 
   DESTDIR = bin
 }
-
-HEADERS  += \
-  src/MeanShift.h \
-
-SOURCES += \
-  src/MeanShift.cpp \
 
 CONFIG(debug, debug|release) {
   mac: TARGET = $$join(TARGET,,,_debug) 
@@ -21,11 +15,15 @@ CONFIG(debug, debug|release) {
 }
 
 test {
-  message(Configuring test build...)
+  !build_pass:message(Configuring test build...)
+  include(src/meanshift.pri)
+  include(test/meanshiftTest.pri)
+  TEMPLATE = app
+  CONFIG += console
 }
 else {
+  include(src/meanshift.pri)
   TEMPLATE = lib
-  #TARGET = meanshift
   CONFIG += staticlib
 }
 

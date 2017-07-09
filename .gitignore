@@ -14,3 +14,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+
+Makefile
+Makefile.Debug
+Makefile.Release

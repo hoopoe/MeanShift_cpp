@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "MeanShift.h"
+#include "../src/MeanShift.h"
 
 using namespace std;
 
