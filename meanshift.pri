@@ -1,7 +1,11 @@
 DEPENDPATH  += $$PWD
 INCLUDEPATH += $$PWD
+
+MEANSHIFT_TARGET_NAME = meanshift
+MEANSHIFT_TARGET_NAME = $$join(MEANSHIFT_TARGET_NAME,,,$$BUILD_CFG_SFX)
+
 win32-msvc* {
-  LIBS += -L$$ROOT_DIR/bin -l$$ROOT_DIR/bin/meanshift $$LIBS
+  LIBS += -L$$ROOT_DIR/bin -l$$MEANSHIFT_TARGET_NAME $$LIBS
 }else {
-  LIBS += -L$$ROOT_DIR/bin -lmeanshift
+  LIBS += -L$$ROOT_DIR/bin -l$$MEANSHIFT_TARGET_NAME
 }
